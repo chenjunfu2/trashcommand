@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 
+//模拟原版末影箱，但是打开的时候如果undo标签不是true则清除，以实现垃圾桶功能
 public class TrashInventory extends SimpleInventory
 {
 	boolean undo = false;
@@ -20,7 +21,7 @@ public class TrashInventory extends SimpleInventory
 		undo = true;
 	}
 	
-	public void clearTrash()
+	public void clearTrash()//清理垃圾
 	{
 		for(int i = 0; i < this.size(); ++i)
 		{

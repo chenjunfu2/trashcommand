@@ -2,7 +2,7 @@ package chenjunfu2.trashcommand.api;
 
 import chenjunfu2.trashcommand.gui.TrashInventory;
 
-public interface TrashInventoryHolder
+public interface TrashInventoryHolder//访问器
 {
 	TrashInventory getTrashInventory();
 }

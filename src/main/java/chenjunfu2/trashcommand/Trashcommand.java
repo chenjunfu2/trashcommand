@@ -15,9 +15,6 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class Trashcommand implements ModInitializer
 {
-	public static final String MOD_ID = "trashcommand";
-	//public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 	@Override
 	public void onInitialize()
 	{
@@ -33,11 +30,10 @@ public class Trashcommand implements ModInitializer
 		);
 	}
 	
-	
 	private static void registerCommand()
 	{
-		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
-		{
+		CommandRegistrationCallback.EVENT.register(
+		(dispatcher, registryAccess, environment) ->
 			dispatcher.register(literal("trash")
 				.requires(ServerCommandSource::isExecutedByPlayer)
 				.executes(context ->
@@ -51,19 +47,20 @@ public class Trashcommand implements ModInitializer
 					}
 				)
 				.then(literal("undo")
-				.requires(ServerCommandSource::isExecutedByPlayer)
-				.executes(context ->
-					{
-						ServerPlayerEntity player = context.getSource().getPlayer();
-						if (player != null)
+					.requires(ServerCommandSource::isExecutedByPlayer)
+					.executes(context ->
 						{
-							((TrashInventoryHolder)player).getTrashInventory().setUndo();//设置undo防止清除物品
-							openGui(player);
+							ServerPlayerEntity player = context.getSource().getPlayer();
+							if (player != null)
+							{
+								((TrashInventoryHolder)player).getTrashInventory().setUndo();//设置undo防止清除物品
+								openGui(player);
+							}
+							return 1;
 						}
-						return 1;
-					}
-				))
-			);
-		});
+					)
+				)
+			)
+		);
 	}
 }

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements TrashInventoryHolder
 {
-	// 添加新字段
+	//添加新字段
 	@Unique
 	private final TrashInventory trashInventory = new TrashInventory(); // 9格垃圾桶
 	
@@ -25,7 +25,7 @@ public abstract class PlayerEntityMixin implements TrashInventoryHolder
 		return this.trashInventory;
 	}
 	
-	
+	//添加读取方法
 	@Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
 	private void loadTrashInventory(NbtCompound nbt, CallbackInfo ci)
 	{
@@ -35,6 +35,7 @@ public abstract class PlayerEntityMixin implements TrashInventoryHolder
 		}
 	}
 	
+	//添加写入方法
 	@Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
 	private void saveTrashInventory(NbtCompound nbt, CallbackInfo ci)
 	{
