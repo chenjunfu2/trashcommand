@@ -13,7 +13,7 @@ public class TrashInventory extends SimpleInventory
 	
 	public TrashInventory()
 	{
-		super(9*6);
+		super(9*6);//大箱子size
 	}
 	
 	public void setUndo()

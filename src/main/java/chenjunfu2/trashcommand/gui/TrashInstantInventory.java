@@ -10,7 +10,7 @@ public class TrashInstantInventory implements Inventory
 	@Override
 	public int size()
 	{
-		return 0;
+		return 9*6;//大箱子size
 	}
 	
 	@Override

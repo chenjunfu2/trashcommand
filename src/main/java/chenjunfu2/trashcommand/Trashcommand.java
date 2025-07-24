@@ -36,7 +36,7 @@ public class Trashcommand implements ModInitializer
 		player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
 				(syncId, inventory, playerEntity) ->
 						GenericContainerScreenHandler.createGeneric9x6(syncId, inventory, new TrashInstantInventory()),
-				Text.literal("无限垃圾桶(Instant trash can)"))
+				Text.literal("即刻销毁垃圾桶(Instant trash can)"))
 		);
 	}
 	
