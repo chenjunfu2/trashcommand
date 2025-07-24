@@ -29,13 +29,14 @@ public class TrashInventory extends SimpleInventory
 		}
 	}
 	
+	@Override
 	public void readNbtList(NbtList nbtList) {
 		clearTrash();
 		
 		for(int i = 0; i < nbtList.size(); ++i)
 		{
 			NbtCompound nbtCompound = nbtList.getCompound(i);
-			int j = nbtCompound.getByte("Slot") & 255;
+			int j = nbtCompound.getByte("Slot");
 			if (j >= 0 && j < this.size())
 			{
 				this.setStack(j, ItemStack.fromNbt(nbtCompound));
@@ -44,6 +45,7 @@ public class TrashInventory extends SimpleInventory
 		
 	}
 	
+	@Override
 	public NbtList toNbtList()
 	{
 		NbtList nbtList = new NbtList();
@@ -63,6 +65,7 @@ public class TrashInventory extends SimpleInventory
 		return nbtList;
 	}
 	
+	@Override
 	public void onOpen(PlayerEntity player)
 	{
 		if(!undo)
@@ -76,6 +79,7 @@ public class TrashInventory extends SimpleInventory
 		super.onOpen(player);
 	}
 	
+	@Override
 	public void onClose(PlayerEntity player)
 	{
 		super.onClose(player);
