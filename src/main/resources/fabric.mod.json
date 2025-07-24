@@ -17,17 +17,10 @@
 	"entrypoints": {
 		"main": [
 			"chenjunfu2.trashcommand.Trashcommand"
-		],
-		"client": [
-			"chenjunfu2.trashcommand.TrashcommandClient"
 		]
 	},
 	"mixins": [
-		"trashcommand.mixins.json",
-		{
-			"config": "trashcommand.client.mixins.json",
-			"environment": "client"
-		}
+		"trashcommand.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.24",

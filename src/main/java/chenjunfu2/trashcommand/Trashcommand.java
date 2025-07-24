@@ -1,6 +1,7 @@
 package chenjunfu2.trashcommand;
 
 import chenjunfu2.trashcommand.api.TrashInventoryHolder;
+import chenjunfu2.trashcommand.gui.TrashInstantInventory;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -21,12 +22,21 @@ public class Trashcommand implements ModInitializer
 		registerCommand();
 	}
 	
-	private static void openGui(PlayerEntity player)
+	private static void openTrashGui(PlayerEntity player)
 	{
 		player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
 				(syncId, inventory, playerEntity) ->
 						GenericContainerScreenHandler.createGeneric9x6(syncId, inventory, ((TrashInventoryHolder)player).trashcommand_1_20_1$getTrashInventory()),
-				Text.literal("垃圾桶(trash can)"))
+				Text.literal("垃圾桶(Trash can)"))
+		);
+	}
+	
+	private static void openTrashInstantGui(PlayerEntity player)
+	{
+		player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+				(syncId, inventory, playerEntity) ->
+						GenericContainerScreenHandler.createGeneric9x6(syncId, inventory, new TrashInstantInventory()),
+				Text.literal("无限垃圾桶(Instant trash can)"))
 		);
 	}
 	
@@ -41,7 +51,7 @@ public class Trashcommand implements ModInitializer
 						ServerPlayerEntity player = context.getSource().getPlayer();
 						if (player != null)
 						{
-							openGui(player);
+							openTrashGui(player);
 						}
 						return 1;
 					}
@@ -54,7 +64,20 @@ public class Trashcommand implements ModInitializer
 							if (player != null)
 							{
 								((TrashInventoryHolder)player).trashcommand_1_20_1$getTrashInventory().setUndo();//设置undo防止清除物品
-								openGui(player);
+								openTrashGui(player);
+							}
+							return 1;
+						}
+					)
+				)
+				.then(literal("instant")
+					.requires(ServerCommandSource::isExecutedByPlayer)
+					.executes(context ->
+						{
+							ServerPlayerEntity player = context.getSource().getPlayer();
+							if (player != null)
+							{
+								openTrashInstantGui(player);
 							}
 							return 1;
 						}
