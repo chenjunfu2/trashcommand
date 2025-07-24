@@ -20,7 +20,7 @@ public abstract class PlayerEntityMixin implements TrashInventoryHolder
 	
 	//添加访问方法
 	@Override
-	public TrashInventory getTrashInventory()
+	public TrashInventory trashcommand_1_20_1$getTrashInventory()
 	{
 		return this.trashInventory;
 	}

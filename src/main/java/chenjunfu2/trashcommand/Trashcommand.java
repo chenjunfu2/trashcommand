@@ -25,7 +25,7 @@ public class Trashcommand implements ModInitializer
 	{
 		player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
 				(syncId, inventory, playerEntity) ->
-						GenericContainerScreenHandler.createGeneric9x6(syncId, inventory, ((TrashInventoryHolder)player).getTrashInventory()),
+						GenericContainerScreenHandler.createGeneric9x6(syncId, inventory, ((TrashInventoryHolder)player).trashcommand_1_20_1$getTrashInventory()),
 				Text.literal("垃圾桶(trash can)"))
 		);
 	}
@@ -53,7 +53,7 @@ public class Trashcommand implements ModInitializer
 							ServerPlayerEntity player = context.getSource().getPlayer();
 							if (player != null)
 							{
-								((TrashInventoryHolder)player).getTrashInventory().setUndo();//设置undo防止清除物品
+								((TrashInventoryHolder)player).trashcommand_1_20_1$getTrashInventory().setUndo();//设置undo防止清除物品
 								openGui(player);
 							}
 							return 1;
