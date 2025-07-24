@@ -3,13 +3,13 @@
 	"id": "trashcommand",
 	"version": "${version}",
 	"name": "trashcommand",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "一个简易的垃圾桶mod，可以撤回上一次的销毁，仅需服务端安装。(A simple trash can mod that allows undoing the last deletion, requiring only server-side installation.)",
 	"authors": [
-		"Me!"
+		"chenjunfu2"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "NULL",
+		"sources": "https://github.com/chenjunfu2/trashcommand/"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/trashcommand/icon.png",
