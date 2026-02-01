@@ -18,5 +18,4 @@ abstract class ServerPlayerEntityMixin
 		
 		newModData.trashcommand_1_20_1$setTrashInventory(oldModData.trashcommand_1_20_1$getTrashInventory());
 	}
-
 }
