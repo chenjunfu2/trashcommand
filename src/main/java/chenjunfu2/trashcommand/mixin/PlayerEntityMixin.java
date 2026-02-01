@@ -12,17 +12,25 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin implements TrashInventoryHolder
+abstract class PlayerEntityMixin implements TrashInventoryHolder
 {
 	//添加新字段
 	@Unique
-	private final TrashInventory trashInventory = new TrashInventory(); // 9格垃圾桶
+	private TrashInventory trashInventory = new TrashInventory(); // 9格垃圾桶
 	
 	//添加访问方法
+	@Unique
 	@Override
 	public TrashInventory trashcommand_1_20_1$getTrashInventory()
 	{
 		return this.trashInventory;
+	}
+	
+	@Unique
+	@Override
+	public void trashcommand_1_20_1$setTrashInventory(TrashInventory trashInventory)
+	{
+		this.trashInventory = trashInventory;
 	}
 	
 	//添加读取方法
